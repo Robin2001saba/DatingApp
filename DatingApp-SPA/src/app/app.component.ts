@@ -1,14 +1,30 @@
-import { Component } from '@angular/core';
-import { ValueComponent } from './value/value.component';  // Make sure this is correct
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NavComponent } from'./nav/nav.component';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthService } from './_services/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-root',
   standalone: true,  // Make sure this is set correctly for standalone component
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [RouterOutlet,ValueComponent]  // Include ValueComponent here if using standalone component
+  imports: [RouterOutlet, NavComponent, HomeComponent, RegisterComponent] // Include ValueComponent here if using standalone component
+  // Include ValueComponent here if using standalone component
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit{
   title = 'DatingApp-SPA';
+  jwtHelper = new JwtHelperService();
+  
+  constructor(private authService: AuthService){}
+
+  ngOnInit(){
+    const token =localStorage.getItem('token');
+    if (token){
+      this.authService.decodedToken=this.jwtHelper.decodeToken(token);
+    }
+  }
 }

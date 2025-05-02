@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { ValueComponent } from './value/value.component';
+import { NavComponent } from './nav/nav.component';
 
 export const routes: Routes = [
-    { path: 'value', component: ValueComponent},
+    { path: 'nav', component: NavComponent},
 ];

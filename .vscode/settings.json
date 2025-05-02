@@ -1,7 +1,11 @@
 {
     "cSpell.words": [
+        "alertify",
+        "alertifyjs",
         "appsettings",
         "ASPNETCORE",
-        "Dtos"
+        "Dtos",
+        "Hmac",
+        "titlecase"
     ]
 }
