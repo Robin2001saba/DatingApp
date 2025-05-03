@@ -4,13 +4,14 @@ import { AuthService } from '../_services/auth.service';
 import { TitleCasePipe,NgIf } from '@angular/common'; // ✅ Import NgIf
 import { AlertifyService } from '../_services/alertify.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css'],
-  imports: [FormsModule,TitleCasePipe,NgIf,BsDropdownModule],  // Include FormsModule here for handling forms
+  imports: [FormsModule,TitleCasePipe,NgIf,BsDropdownModule,RouterModule],  // Include FormsModule here for handling forms
 })
 
 export class NavComponent implements OnInit {
@@ -19,7 +20,8 @@ export class NavComponent implements OnInit {
 
   constructor(public authService: AuthService,
     private cdRef: ChangeDetectorRef,
-    private alertify: AlertifyService
+    private alertify: AlertifyService,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -31,9 +33,14 @@ export class NavComponent implements OnInit {
       },
       error: (err: any) => {
         this.errorMessage = err.message;
-        this.alertify.error(err); // ✅ now it's the message you created in the interceptor
+        this.alertify.error(err);
+      },
+      complete: () => {
+        this.router.navigate(['/members']);
       }
     });
+  
+  
   }
   
   loggedIn(): boolean {
@@ -46,5 +53,6 @@ export class NavComponent implements OnInit {
     localStorage.removeItem('token');
     this.cdRef.detectChanges();
     this.alertify.message('Logged out');
+    this.router.navigate(['/home']);
   }
 }

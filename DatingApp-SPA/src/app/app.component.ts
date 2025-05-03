@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { NavComponent } from'./nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -11,7 +11,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   standalone: true,  // Make sure this is set correctly for standalone component
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [RouterOutlet, NavComponent, HomeComponent, RegisterComponent] // Include ValueComponent here if using standalone component
+  imports: [RouterOutlet, NavComponent, HomeComponent] // Include ValueComponent here if using standalone component
   // Include ValueComponent here if using standalone component
 })
 
