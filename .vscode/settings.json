@@ -6,6 +6,7 @@
         "ASPNETCORE",
         "Dtos",
         "Hmac",
+        "Newtonsoft",
         "titlecase"
     ]
 }

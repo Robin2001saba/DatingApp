@@ -7,8 +7,7 @@ import { ListsComponent } from './lists/lists.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 export const routes: Routes = [
-    //{ path: '', component: HomeComponent},
-    { path: 'home', component: HomeComponent},
+    { path: '', component: HomeComponent},
     {
         path:'',
         runGuardsAndResolvers:'always',
@@ -22,5 +21,5 @@ export const routes: Routes = [
     // { path: 'members', component: MemberListComponent,canActivate: [AuthGuard]},
     // { path: 'messages', component: MessagesComponent},
     // { path: 'lists', component: ListsComponent},
-    { path: '**', redirectTo: 'home', pathMatch:'full'},
+    { path: '**', redirectTo: '', pathMatch:'full'},
 ];
