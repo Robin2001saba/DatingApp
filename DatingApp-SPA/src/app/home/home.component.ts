@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RegisterComponent } from "../register/register.component";
 import { NgIf } from '@angular/common';
+import { MemberListComponent } from '../members/member-list/member-list.component';
+import { MemberCardComponent } from '../members/member-card/member-card.component';
 
 @Component({
   selector: 'app-home',

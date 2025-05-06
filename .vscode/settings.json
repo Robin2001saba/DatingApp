@@ -6,7 +6,9 @@
         "ASPNETCORE",
         "Dtos",
         "Hmac",
+        "kolkov",
         "Newtonsoft",
+        "tabset",
         "titlecase"
     ]
 }
