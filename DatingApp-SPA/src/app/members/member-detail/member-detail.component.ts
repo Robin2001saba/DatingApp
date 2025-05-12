@@ -5,14 +5,16 @@ import { AlertifyService } from '../../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, NgxGalleryModule } from '@kolkov/ngx-gallery';
-
+import { CommonModule } from '@angular/common';
+import { TimeAgoPipe } from 'time-ago-pipe';
+import { TimeagoModule, TimeagoPipe } from 'ngx-timeago';
 
 @Component({
   selector: 'app-member-detail',
   standalone: true,
   templateUrl: './member-detail.component.html',
   styleUrls: ['./member-detail.component.css'],
-  imports:[TabsModule, NgxGalleryModule]
+  imports:[CommonModule, TabsModule, TimeagoModule, NgxGalleryModule]
 })
 export class MemberDetailComponent implements OnInit {
   user!: User;

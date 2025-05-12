@@ -7,6 +7,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
+import { FileUploadModule } from 'ng2-file-upload';
 
 export function tokenGetter(){
   return localStorage.getItem('token');
@@ -26,6 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     ErrorInterceptorProvider,
     provideAnimations(),
+    FileUploadModule,
     importProvidersFrom(
       JwtModule.forRoot({
         jwtOptionsProvider:{
@@ -42,6 +44,6 @@ export const appConfig: ApplicationConfig = {
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: CustomHammerConfig
-    }
+    },
     ],
 };

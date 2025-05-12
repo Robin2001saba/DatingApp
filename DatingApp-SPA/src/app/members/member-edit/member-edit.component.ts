@@ -4,23 +4,25 @@ import { ActivatedRoute } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FormsModule, NgForm } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { AlertifyService } from '../../_services/alertify.service';
 import { UserService } from '../../_services/user.service';
 import { AuthService } from '../../_services/auth.service';
+import { PhotoEditorComponent } from '../photo-editor/photo-editor.component';
+import { TimeagoModule } from 'ngx-timeago';
 
 @Component({
   selector: 'app-member-edit',
   standalone: true,
   templateUrl: './member-edit.component.html',
   styleUrls: ['./member-edit.component.css'],
-  imports:[FormsModule, TabsModule, NgxGalleryModule,NgIf]
+  imports:[CommonModule, FormsModule, TabsModule, NgxGalleryModule, TimeagoModule, NgIf, PhotoEditorComponent]
 })
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm',{static: true}) editForm?: NgForm
 
   user!: User;
-  
+  photoUrl?: string;
   @HostListener('window:beforeunload',['$event'])
   unloadNotification($event: any){
     if(this.editForm?.dirty){
@@ -37,6 +39,7 @@ export class MemberEditComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.user =data['user'];
+      this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
     })
   }
 
@@ -48,7 +51,14 @@ export class MemberEditComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
-    
   }
+
+  // updateMainPhoto(photoUrl: string){
+  //   this.user.photoUrl = photoUrl;
+  // }
+  updateMainPhoto(photoUrl: string) {
+    this.user.photoUrl = photoUrl;
+  }
+  
 
 }
