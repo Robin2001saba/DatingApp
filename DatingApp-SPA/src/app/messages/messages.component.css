@@ -1,0 +1,30 @@
+
+
+table {
+    margin-top: 15px;
+}
+
+
+.img-circle {
+    width: 50px;       /* or any fixed size you want */
+    height: 50px;
+    object-fit: cover;  /* ensures image doesn't stretch */
+    border-radius: 50%; /* this makes it a circle */
+}
+
+.margin-right{
+    margin-right: 3px;
+}
+.margin-top{
+    margin-top: 5px;
+}
+
+.margin-left{
+    margin-left: 10px;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+
+}
+

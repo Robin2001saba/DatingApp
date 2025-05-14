@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { TimeagoModule } from 'ngx-timeago';
 import { ListsResolver } from './app/_resolvers/lists.resolver';
+import { MessagesResolver } from './app/_resolvers/messages.resolver';
 // bootstrapApplication(AppComponent, appConfig)
 //   .catch((err) => console.error(err));
 
@@ -34,6 +35,7 @@ bootstrapApplication(AppComponent, {
       FileSelectDirective,
       MemberEditResolver,
       ListsResolver,
+      MessagesResolver,
       PreventUnsavedChanges,
       TimeAgoPipe,
       TimeagoModule.forRoot(),
